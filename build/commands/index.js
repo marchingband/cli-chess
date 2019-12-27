@@ -148,18 +148,18 @@ const EMPTY_SQUARE = {
   c: 'e'
 };
 
-const Sq = ({
-  p,
+const Square = ({
+  piece,
   cursor,
   bgIsWhite
 }) => _react.default.createElement(_ink.Color, {
-  hex: p.c == 'b' ? "#000000" : '#FFFFFF',
+  hex: piece.c == 'b' ? "#000000" : '#FFFFFF',
   bgHex: cursor ? '#C2BD79' : bgIsWhite ? "#555555" : "#999999"
 }, _react.default.createElement(_ink.Box, {
   width: 3,
   justifyContent: "center",
   alignItems: "center"
-}, p.c == 'b' ? _chalk.default.bold(' ' + p.p + ' ') : ' ' + p.p + ' '));
+}, piece.c == 'b' ? _chalk.default.bold(' ' + piece.p + ' ') : ' ' + piece.p + ' '));
 
 const initBoard = [['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'].map(x => ({
   p: x,
@@ -211,15 +211,15 @@ const Chess = () => {
     k.return && setMoving(!moving);
     k.escape && setBoard(lastBoard);
   });
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ink.Text, null, " "), _react.default.createElement(_ink.Text, null, " "), _react.default.createElement(_ink.Text, null, " "), _react.default.createElement(_inkGradient.default, {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ink.Static, null, _react.default.createElement(_ink.Text, null, " "), _react.default.createElement(_ink.Text, null, " "), _react.default.createElement(_ink.Text, null, " "), _react.default.createElement(_inkGradient.default, {
     name: "mind"
   }, _react.default.createElement(_ink.Text, null, "return picks up and drops pieces")), _react.default.createElement(_inkGradient.default, {
     name: "mind"
-  }, _react.default.createElement(_ink.Text, null, "escape will undo the last move")), _react.default.createElement(_ink.Text, null, " "), _react.default.createElement(_ink.Text, null, " "), board.map(moving ? set(mover.x, mover.y, EMPTY_SQUARE) : x => x).map(moving ? set(curX, curY, mover.piece) : x => x).map((line, i) => line.map((piece, j) => _react.default.createElement(Sq, {
+  }, _react.default.createElement(_ink.Text, null, "escape will undo the last move")), _react.default.createElement(_ink.Text, null, " "), _react.default.createElement(_ink.Text, null, " ")), board.map(moving ? set(mover.x, mover.y, EMPTY_SQUARE) : x => x).map(moving ? set(curX, curY, mover.piece) : x => x).map((line, i) => line.map((piece, j) => _react.default.createElement(Square, {
+    key: j,
     bgIsWhite: odd(i) == odd(j),
     cursor: i == curY && j == curX,
-    key: j,
-    p: piece
+    piece: piece
   }))).map((line, i) => _react.default.createElement(_ink.Box, {
     key: i
   }, line)));

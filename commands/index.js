@@ -8,13 +8,13 @@ const set = (x, y, newPiece) => (line,i) => line.map((piece, j) => j==x && i==y 
 
 const EMPTY_SQUARE = {p:' ', c:'e'}
 
-const Sq = ({p,cursor,bgIsWhite}) => 
+const Square = ({piece, cursor, bgIsWhite}) => 
 	<Color 
-		hex={p.c=='b' ? "#000000" : '#FFFFFF'} 
+		hex={piece.c=='b' ? "#000000" : '#FFFFFF'} 
 		bgHex={cursor ? '#C2BD79' : bgIsWhite ? "#555555" : "#999999"}
 	>
 		<Box width={3} justifyContent='center' alignItems='center'>
-			{p.c=='b' ? chalk.bold(' '+p.p+' ') : ' '+p.p+' '}
+			{piece.c=='b' ? chalk.bold(' '+piece.p+' ') : ' '+piece.p+' '}
 		</Box>
 	</Color>
 
@@ -54,22 +54,22 @@ const Chess = () => {
 	})
 	return(
 		<>
-		{/* <Static> */}
+		<Static>
 			<Text> </Text><Text> </Text><Text> </Text>
 			<Gradient name="mind"><Text>return picks up and drops pieces</Text></Gradient>
 			<Gradient name="mind"><Text>escape will undo the last move</Text></Gradient>
 			<Text> </Text><Text> </Text>
-		{/* </Static> */}
+		</Static>
 		{
 			board
 			.map(moving ? set(mover.x, mover.y, EMPTY_SQUARE) : x=>x)
 			.map(moving ? set(curX, curY, mover.piece) : x=>x)
 			.map((line,i)=> line.map((piece,j)=>
-				<Sq 
+				<Square
+					key={j}
 					bgIsWhite={odd(i) == odd(j)}
 					cursor={i==curY && j==curX} 
-					key={j} 
-					p={piece}
+					piece={piece}
 				/>
 			))
 			.map((line,i)=><Box key={i}>{line}</Box>)
