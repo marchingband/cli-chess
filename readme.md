@@ -14,4 +14,9 @@ $ cli-chess
 
 ```
 
+## Github
+
+<https://github.com/marchingband/cli-chess>
+
+
 ![Screen Grab](./screencap.png)
