@@ -14,4 +14,4 @@ $ cli-chess
 
 ```
 
-![Screen Grab](https://github.com/marchingband/cli-chess/blob/master/screencap.png)
+![Screen Grab](./screencap.png)
