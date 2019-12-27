@@ -1,0 +1,26 @@
+{
+	"name": "cli-chess",
+	"version": "0.0.0",
+	"license": "MIT",
+	"bin": "./build/cli.js",
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"dev": "pastel dev",
+		"build": "pastel build",
+		"prepare": "pastel build"
+	},
+	"files": [
+		"build"
+	],
+	"dependencies": {
+		"ink": "^2.6.0",
+		"ink-big-text": "^1.0.1",
+		"ink-box": "^1.0.0",
+		"ink-gradient": "^1.0.0",
+		"pastel": "^1.0.3",
+		"prop-types": "^15.7.2",
+		"react": "^16.12.0"
+	}
+}
