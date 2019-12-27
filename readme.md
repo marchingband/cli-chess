@@ -14,4 +14,4 @@ $ cli-chess
 
 ```
 
-![Screen Grab](![Image description](link-to-image))
+![Screen Grab](link-to-image)
